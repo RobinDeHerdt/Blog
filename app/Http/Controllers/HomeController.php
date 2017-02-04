@@ -3,26 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Blogpost;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function index() 
     {
-        $this->middleware('auth');
-    }
+        $blogposts = Blogpost::paginate(5)->sortByDesc('created_at');
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('home');
+        return view('home', [
+            'blogposts'      => $blogposts
+        ]);
     }
 }
