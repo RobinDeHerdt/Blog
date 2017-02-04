@@ -11,10 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('/home');
-});
+// Auth::routes();
+Route::get('/login', 'Auth\LoginController@showLoginForm');
+Route::post('/login', 'Auth\LoginController@login');
+Route::post('/logout', 'Auth\LoginController@logout');
 
-Auth::routes();
+Route::get('/', 'BlogpostController@index');
 
-Route::get('/home', 'HomeController@index');
+// Admin routes
+Route::get('/blogpost/create', 'BlogpostController@create');
+Route::post('/blogpost/store', 'BlogpostController@store');
