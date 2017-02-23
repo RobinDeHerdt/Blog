@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function index() 
     {
-        $blogposts = Blogpost::paginate(5)->sortByDesc('created_at');
+        $blogposts = Blogpost::orderBy('created_at','desc')->paginate(5);
 
         return view('home', [
             'blogposts'      => $blogposts

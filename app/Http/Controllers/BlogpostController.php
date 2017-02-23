@@ -25,13 +25,22 @@ class BlogpostController extends Controller
 
     public function store(Request $request)
     {
-    	$blogpost = new Blogpost();
+    	$blogpost       = new Blogpost();
 
-    	$blogpost->title 	= $request->title;
-    	$blogpost->body 	= $request->body;
-    	$blogpost->user_id	= Auth::id();
+        $date           = $request->created_at; 
+        $randomHour     = rand(18,23);
+        $randomMinute   = rand(10,60);
+        $randomSecond   = rand(10,60);
 
-    	$blogpost->save();
+        // Format: 2017-02-23 14:05:06
+        $datetime             = $date . ' ' . $randomHour . ':' . $randomMinute . ':' .$randomSecond;
+
+    	$blogpost->title 	  = $request->title;
+    	$blogpost->body 	  = $request->body;
+        $blogpost->created_at = $datetime;
+    	$blogpost->user_id	  = Auth::id();
+
+    	$blogpost->save(['timestamps' => false]);
 
         Session::flash('create_status', 'Post created successfully');
 
@@ -51,10 +60,19 @@ class BlogpostController extends Controller
     {
         $blogpost = Blogpost::find($id);
         
-        $blogpost->title    = $request->title;
-        $blogpost->body     = $request->body;
+        $date           = $request->created_at; 
+        $randomHour     = rand(18,23);
+        $randomMinute   = rand(10,60);
+        $randomSecond   = rand(10,60);
 
-        $blogpost->save();
+        // Format: 2017-02-23 14:05:06
+        $datetime               = $date . ' ' . $randomHour . ':' . $randomMinute . ':' .$randomSecond;
+
+        $blogpost->created_at   = $datetime;
+        $blogpost->title        = $request->title;
+        $blogpost->body         = $request->body;
+
+        $blogpost->save(['timestamps' => false]);
 
         Session::flash('update_status', 'Post updated successfully');
 

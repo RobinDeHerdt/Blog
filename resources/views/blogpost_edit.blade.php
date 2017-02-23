@@ -12,6 +12,10 @@
             <label for="exampleTextarea">Content</label>
             <textarea class="form-control" rows="3" name="body">{{ $blogpost->body }}</textarea>
         </div>
+        <div class="form-group">
+            <label for="created_at">Created at</label>
+            <input type="date" class="form-control" name="created_at" value="{{ $blogpost->created_at->format('Y-m-d') }}"></input>
+        </div>
         <button type="submit" class="btn btn-primary">Update</button>
     </form>
 </div>

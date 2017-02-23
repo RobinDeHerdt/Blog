@@ -12,6 +12,10 @@
             <label for="exampleTextarea">Content</label>
             <textarea class="form-control" rows="3" name="body"></textarea>
         </div>
+        <div class="form-group">
+            <label for="created_at">Created at</label>
+            <input type="date" class="form-control" name="created_at"></input>
+        </div>
         <button type="submit" class="btn btn-primary">Save</button>
     </form>
 </div>
