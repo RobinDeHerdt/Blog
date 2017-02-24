@@ -20,7 +20,7 @@
                     <th>ID</th>
                     <th>Title</th>
                     <th>Content</th>
-                    <th>Created at</th>
+                    <th>Date</th>
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
@@ -29,7 +29,7 @@
                         <td>{{ $blogpost->id }}</td>
                         <td>{{ $blogpost->title }}</td>
                         <td>{{ str_limit($blogpost->body, 75) }}</td>
-                        <td>{{ $blogpost->created_at }}</td>
+                        <td>{{ $blogpost->created_at->format('d-m-Y') }}</td>
                         <td><a href="/blogpost/{{$blogpost->id}}/edit">Edit</a></td>
                         <td><form action="/blogpost/{{$blogpost->id}}/delete" method="POST">{{csrf_field()}}<input type="submit" value="Delete"></form></td>
                     </tr>
