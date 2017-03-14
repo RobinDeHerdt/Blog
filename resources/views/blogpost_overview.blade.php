@@ -17,7 +17,6 @@
             @if($blogposts->count())
             <table class="table table-striped">
                 <tr>
-                    <th>ID</th>
                     <th>Title</th>
                     <th>Content</th>
                     <th>Date</th>
@@ -26,7 +25,6 @@
                 </tr>
                 @foreach ($blogposts as $blogpost)
                     <tr>
-                        <td>{{ $blogpost->id }}</td>
                         <td>{{ $blogpost->title }}</td>
                         <td>{{ str_limit($blogpost->body, 75) }}</td>
                         <td>{{ $blogpost->created_at->format('d-m-Y') }}</td>
